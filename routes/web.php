@@ -37,13 +37,22 @@ Route::post('/salvarmudancas', 'UsuarioController@salvarMudancas');
 
 //PROFILE
 Route::get('/profile', 'UsuarioController@profile');
-Route::get('/profilePost', 'PostController@feedProfile')->middleware('auth');
+Route::get('/profile/editaPerfil/{usuario_id}', 'UsuarioController@editaPerfil')->middleware('auth');
+Route::get('/profile/atualizaPerfil/{usuario_id}', 'UsuarioController@atualizaPerfil')->middleware('auth');
+Route::get('/profile/editaMural/{usuario_id}', 'UsuarioController@editaMural');
+Route::post('/profile/atualizaMural/{usuario_id}', 'UsuarioController@atualizaFundo')->middleware('auth');
+Route::get('/profile/editaFoto/{usuario_id}', 'UsuarioController@editaFoto')->middleware('auth');
+Route::post('/profile/atualizaFoto/{usuario_id}', 'UsuarioController@atualizaFoto')->middleware('auth');
+Route::get('/profilePost', 'PostController@feedProfile')
+->name('user.profile')
+->middleware('auth');
+
 Route::post('/createpostProfile', 'PostController@createpostProfile')->middleware ( 'auth' );
-Route::get('/profile/deletepost/{post_id}', 'PostController@deletePostProfile')->middleware ( 'auth' );
+Route::get('/profile/deletepost/{post_id}', 'PostController@deletePostProfile')
+->name('delete.post')
+->middleware ( 'auth' );
+
 Route::get('/profile/editarpost/{post_id}', 'PostController@editarPostProfile')->middleware('auth');
-
-
-
 
 
 //FAQ
@@ -55,3 +64,7 @@ Route::post('/pesquisaUsuarios','UsuarioController@pesquisaUsuario');
 
 //SEGUIR
 Route::post('/seguirPessoas', 'UsuarioController@seguirPessoas')->middleware('auth');
+
+//Botão de foto do perfil 
+// Route::get('/profile/editaFoto/{usuario_id}', 'UsuarioController@editaFoto')->middleware('auth');
+// Route::post('/profile/atualizaFoto/{usuario_id}', 'UsuarioController@atualizaFoto')->middleware('auth');

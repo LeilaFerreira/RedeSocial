@@ -1,5 +1,5 @@
 
-$(window).on("load", function(){
+$(window).on("load", function(){ 
     $.ajax({
     url:'https://servicodados.ibge.gov.br/api/v1/localidades/estados/',
     type: 'GET',

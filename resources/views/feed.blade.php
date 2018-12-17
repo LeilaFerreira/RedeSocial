@@ -7,10 +7,11 @@
 
 
 
-  <div class="col-md-3">
+<div class="col-md-3">
         <div class="cardLateral card">
+              <img src="/foto-mural/{{Auth::user()->fotoMural}}">
                   <div class="photo"> @if(Auth::user()->fotoProfile)
-                    <img src="{{Auth::user()->fotoProfile}}" 
+                    <img src="/foto-perfil/{{Auth::user()->fotoProfile}}" 
                   class="profile-photo-md" alt="post-image"
                   class="img-responsive post-image"> @endif</div>
             
@@ -40,7 +41,7 @@
 
                     
                       @if(Auth::user()->fotoProfile)
-                        <img src="{{Auth::user()->fotoProfile}}" 
+                        <img src="/foto-perfil/{{Auth::user()->fotoProfile}}"
                                         class="profile2-photo-md"> 
                       @endif
 
@@ -91,14 +92,18 @@
                                 
                                         <div class="form-group">
                                           @if(Auth::user()->fotoProfile)
-                                          <img src="{{Auth::user()->fotoProfile}}" 
-                                        class="profile2-photo-md"> @endif
+                                          <img src="/foto-perfil/{{Auth::user()->fotoProfile}}" 
+                                        class="profile2-photo-md"> 
+                                        @else
+                                            <img src="{{URL::asset('foto-perfil/profile_defauth.jpg')}}"  class="profile2-photo-md"/>     
+                                         
+                                        @endif
                                         &nbsp; &nbsp;
-                                        <textarea name="post" id="post" cols="80" rows="2" class="form-control" ></textarea>
+                                        <textarea name="post" id="post" cols="80" rows="4" class="" ></textarea>
                                           </div>
                                   <div>
                                 <br>
-                                <input type="submit" id="btnCadastrar" class="btn btn-primary pull-right" value="Publicar"/>
+                                <input type="submit" id="btnCadastrar" class="btn-primary pull-right" value="Publicar"/>
                           </div>
                             
                           </div>

@@ -9,10 +9,10 @@
 background{
   color: rgb(192, 177, 177)
 }
-body{
+/* body{
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
-}
+} */
 
 .container-fluid{
       background-color: #fff !important;

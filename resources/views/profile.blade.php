@@ -18,38 +18,42 @@
 
 <body>
 
-  <div id="perfil">
+  
+<!-- Capa do Perfil -->
+<div class="header">
+    <img src="/foto-mural/{{$usuario->fotoMural}}" style="position:relative;
+    width:100%; height:200px; background-size:cover; background-position: center;
+    background-size: cover; min-height: 360px; border-radius: 0 0 4px 4px;">
+    <!-- Botão "Alterar Fundo" -->
+  </div>
+  <button class="mui-btn">
+      <a href="/profile/editaMural/{{$usuario->usuario_id}}">ALTERAR FOTO</a>
+      <i class="fa fa-picture-o" aria-hidden="true"></i>
+    </button>
 
-	<!-- Capa do Perfil -->
-	<div class="header">
-		<!-- Botão "Alterar Fundo" -->
-		<button class="mui-btn">
-			<div class="text">ALTERAR FUNDO</div>
-			<i class="fa fa-picture-o" aria-hidden="true"></i>
-		</button>
-	</div>
 
 	<!-- Avatar do Utilizador -->
 	<div class="avatar">
   
   @if($usuario->fotoProfile)
-  <img src="{{$usuario->fotoProfile}}" 
+  <img src="/foto-perfil/{{$usuario->fotoProfile}}" 
             class="profile-photo-md" alt="post-image"
             class="img-responsive post-image"> @endif
  	</div>
 	<!-- Opções de Conta -->
-	<div class="opperfil">
-		<center>
-			<!-- Botão "Editar Perfil" -->
-			<button class="btn btn-lighty" style="background-color: #149AC9; ;color: #fff; margin-bottom: 0">
-				<div class="text">ALTERAR FOTO</div>
+	 <div class="opperfil">
+    <center>
+      <!-- Botão "Editar Perfil" -->
+			<button class="mui-btn mui-btn--primary" style="background-color: #149AC9; ;color: #fff; margin-bottom: 0">
+				<!--<div class="text">ALTERAR FOTO</div>-->
+        <a href="/profile/editaFoto/{{$usuario->usuario_id}}" style="color: #fff">ALTERAR FOTO</a>
 			</button>
 			<!-- Botão "Alterar Password" -->
 			<button class="mui-btn mui-btn--primary" style="background-color: #149AC9; ;color: #fff; margin-bottom: 0">
-				<div class="text">EDITAR PERFIL</div>
+				<a href="/profile/editaPerfil/{{$usuario->usuario_id}}" style="color: #fff">EDITAR PERFIL</a>
 			</button>
-		</center>
-	</div>
+    </center>
+  </div>
 	<br><br><br>
 	<!-- Título do Perfil -->
 	<div class="tituloperfil">
@@ -93,23 +97,15 @@
             <div class="col-md-10 col-sm-7">
               <div class="form-group">
                
-                <textarea name="post" id="post" cols="80" rows="3" class="form-control" ></textarea>
+                <textarea name="post" id="post" cols="80" rows="4" class="" ></textarea>
               </div>
              <div>
              <br>
-             <input type="submit" id="btnCadastrar" class="btn btn-primary pull-right" value="Publicar"/>
+             <input type="submit" id="btnCadastrar" class="btn-primary pull-right" value="Publicar"/>
              </div>
               
             </div>
-            <!-- <div class="col-md-5 col-sm-5">
-              <div class="tools">
-                <ul class="publishing-tools list-inline">
-                  <li><a href="#"><i class="ion-compose"></i></a></li>
-                  <li><a href="#"><i class="ion-images"></i></a></li>
-                </ul>
-             
-              </div>
-            </div> -->
+           
           
           </div>
           
@@ -122,7 +118,7 @@
     <div id="exibePost">
     @isset($posts)
  @foreach($posts as $post)
-          <div class="post-content">
+          <div class="post-content" id="{{$post->post_id}}">
 
             <!--Post Date-->
             <div class="post-date hidden-xs hidden-sm">
@@ -132,7 +128,10 @@
             @if($usuario->fotoProfile)
             <img src="{!! asset($usuario->fotoProfile) !!}" 
             class="profile2-photo-md pull-left" alt="post-image"
-            class="img-responsive post-image">@endif
+            class="img-responsive post-image">
+            @else
+                <img src="{{URL::asset('foto-perfil/profile_defauth.jpg')}}"  class="profile2-photo-md"/>     
+            @endif
             
             {{ Auth::user()->nome}} </h5>
             
@@ -153,7 +152,9 @@
                         </div>
                         <div class="line-divider"></div>
                         <div class="post-text">
-                        <p class="post-text">{{ $post->post }}</p> <i class="em em-anguished"></i> <i class="em em-anguished"></i> <i class="em em-anguished"></i></p>
+                        <p class="post-text">{{ $post->post }}</p> 
+                        <i class="em em-anguished"></i> <i class="em em-anguished"></i> 
+                        <i class="em em-anguished"></i></p>
                         </div>
                         <div class="line-divider"></div>
                         
@@ -169,9 +170,9 @@
                         <div class="post-comment">
                         <!-- <img src="#" alt="" class="profile-photo-sm"> -->
                         <!-- <input type="text" class="form-control" placeholder="Post a comment"> -->
-                        <a href="/profile/editarpost/{{$post->post_id}}" class="btn btn-primary pull-right" >Editar</a>
-                        <a href="/profile/deletepost/{{$post->post_id}}" class="btn btn-primary pull-right" >Excluir</a>
-                        <!-- <button type="submit" class="btn btn-primary pull-right" style="background-color: #149AC9; ;color: #fff; margin-bottom: 0">Publicar</button> -->
+                        <a href="/profile/editarpost/{{$post->post_id}}" class=" btn-primary pull-right" >Editar</a>
+                        <a href="{{ route('delete.post', ['post_id' => $post->post_id]) }}" class=" btn-primary pull-right" >Excluir</a>
+                        <!-- <button type="submit" class=" btn-primary pull-right" style="background-color: #149AC9; ;color: #fff; margin-bottom: 0">Publicar</button> -->
                         <input type="hidden" value="{{ Session::token() }}" name="_token">
 
                         </div>
@@ -218,9 +219,8 @@
     border-radius:5px;background: #FFF; box-shadow: 0 0 5px #A1A1A1; margin-top:10px;
     overflow: hidden}
      div#publish img{margin-top:0px; margin-left: 10px; width:40px; cursor:pointer;}
-
     </style>
-    <script src='js/mui.mim.js'></script>
+ 
 
     <input type="hidden" id="token" value="{{ Session::token() }}" name="_token">
 

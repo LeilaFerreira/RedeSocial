@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Usuario;
+use App\Amigos; 
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\DB;
+use File;
+use Image;
 
 class UsuarioController extends Controller
 {
@@ -31,11 +36,16 @@ class UsuarioController extends Controller
       $confirmaSenha = bcrypt($request['confirmaPassword']);  
       $usuario->estado = $request['estado'];
       $usuario->cidade = $request['cidade'];
-      $request->file('fotoPerfil')->move('foto-perfil/',$usuario->usuario_id.'.'.$request->file('fotoPerfil')->getClientOriginalExtension());
-      $usuario->fotoProfile = 'foto-perfil/'.$usuario->usuario_id.'.'.$request->file('fotoPerfil')->getClientOriginalExtension();
-   
+
       $usuario->save();
 
+      //Trecho onde é feito o tratamento da imagem para armazenar no banco
+      $imagem = $request->file('fotoPerfil');
+      $filename = $usuario->usuario_id . '.' . $imagem->getClientOriginalExtension();
+      Image::make($imagem)->resize(300,300)->save(public_path('/foto-perfil/' . $filename));
+      $usuario->fotoProfile = $filename;
+   
+      $usuario->save();
 
      Auth::login($usuario);
      $id = Auth::id();
@@ -68,6 +78,62 @@ class UsuarioController extends Controller
       return view('profile')->with('usuario', $usuario_id);
   }
 
+  public function editaFoto($usuario_id){
+    $usuario = Usuario::find($usuario_id);
+    return view('edita_foto')->with('usuario', $usuario);
+  }
+
+  public function atualizaFoto(Request $request, $usuario_id){
+
+    if($request->hasFile('fotoPerfil')){
+      $imagem = $request->file('fotoPerfil');
+      $filename = $usuario_id . '.' . $imagem->getClientOriginalExtension();
+      Image::make($imagem)->resize(300,300)->save(public_path('/foto-perfil/' . $filename));
+
+    $usuario = Auth::user();
+    $usuario->fotoProfile = $filename;
+    $usuario->save();
+    }
+      return view('profile', array('usuario' => Auth::user()));
+
+      
+  }
+
+  public function editaPerfil($usuario_id){
+    $usuario = Usuario::find($usuario_id);
+    return view('edita_perfil')->with('usuario', $usuario);
+  }
+
+  public function atualizaPerfil(Request $request, $usuario_id){
+    $usuario = Usuario::find($usuario_id);
+    $usuario->nome = $request->nome;
+    $usuario->email = $request->email;
+    $usuario->password = $request->password;
+    $usuario->estado = $request->estado;
+    $usuario->cidade = $request->cidade;
+    $usuario->save();
+    return view('profile');
+  }
+
+  public function editaMural($usuario_id){
+    $usuario = Usuario::find($usuario_id);
+    return view('altera_mural')->with('usuario', $usuario);
+  }
+
+  public function atualizaFundo(Request $request, $usuario_id){
+    
+    if($request->hasFile('fotoMural')){
+        $imagem = $request->file('fotoMural');
+        $filename = $usuario_id . '.' . $imagem->getClientOriginalExtension();
+        Image::make($imagem)->resize(300,300)->save(public_path('/foto-mural/' . $filename));
+
+      $usuario = Auth::user();
+      $usuario->fotoMural = $filename;
+      $usuario->save();
+      }
+
+      return view('profile', array('usuario' => Auth::user()));
+  }
   public function faq()
   {
        return view('faq');
@@ -89,10 +155,15 @@ class UsuarioController extends Controller
  public function pesquisaUsuario(Request $request){
 
     $parametro = $request['pesquisa'];
-         $listUsuarios =  DB::table('usuarios')
-        ->where('nome', 'like', "%".$parametro."%") ->get();
         
-        return view('lsUsuariosPesquisa')->with('listUsuarios', $listUsuarios);
+    if($parametro){
+      $listUsuarios =  DB::table('usuarios')
+      ->where('nome', 'like', "%".$parametro."%") ->get();
+      return view('lsUsuariosPesquisa')->with('listUsuarios', $listUsuarios);
+    }else{
+      return view('lsUsuariosPesquisa')->with('listUsuarios', null);
+    }
+     
     }
 
 
@@ -110,4 +181,26 @@ class UsuarioController extends Controller
 
 
     }
+
+    // public function editaFoto($usuario_id){
+    //   $usuario = Usuario::find($usuario_id);
+    //   return view('edita_foto')->with('usuario', $usuario);
+    // }
+  
+    // public function atualizaFoto(Request $request, $usuario_id){
+    //     $usuario = Usuario::find($usuario_id);
+  
+    //     if(Input::file('fotoPerfil'))
+    //     {
+    //       $request->file('fotoPerfil')->move('foto-perfil/',$usuario->usuario_id.'.'.$request->file('fotoPerfil')->getClientOriginalExtension());
+    //       $usuario->fotoProfile = 'foto-perfil/'.$usuario->usuario_id.'.'.$request->file('fotoPerfil')->getClientOriginalExtension();
+   
+    //       $usuario->save();
+
+
+    //     }
+  
+    //     return view('profile')->with('usuario', $usuario);
+    // }
+
   }

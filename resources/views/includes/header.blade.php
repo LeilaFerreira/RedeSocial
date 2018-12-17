@@ -2,30 +2,8 @@
 <body>
 
 
-  
-<link rel='stylesheet' href="/css/postagens.css">
-<link rel='stylesheet' href="/css/mui.min.css">
-  <link rel="stylesheet" href="/css/style.css">
-<link href="/css/estilos.css" rel="stylesheet">
-<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
-<link rel="dns-prefetch" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  
-  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-  <script  src="js/index.js"></script>
 
-  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato:400,700,300'>
-  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'>
-  <link rel="stylesheet" href="css/style2.css">
-  
-  <link rel="stylesheet" href="css/style3.css" media="screen" type="text/css" />
-  <script src="js/modernizr.js"></script>
-
-  <link rel="stylesheet" href="css/postagens.css" media="screen" type="text/css" />
-
-
+<meta name="csrf-token" content="{{ csrf_token() }}">
  <style type="text/css">
   *{font-family: 'Montserrat'; cursive; margin:0;}
   body{background: white;}
@@ -74,37 +52,29 @@
           
           </div>
              <div>
-              <form class="form-inline my-2 my-lg-0" style= "padding-top:9%" id="form_pesquisa" name="form_pesquisa">
-                  <input class="form-control mr-sm-2" type="search" id="pesquisa"
-                   name="pesquisa" placeholder="" aria-label="Pesquisa Usuario">
-                  <a href="#"> <span class="glyphicon glyphicon-search"></span>   </a>
-                  <input type="hidden" value="{{ Session::token() }}" name="_token">
-                </form>
-                 
-                  <div id="contentLoading">
-                    <div id="loading"></div>
-                  </div>
-                 
+
+  
+                  <form class="form-inline my-2 my-lg-0"  style= "padding-top:9%" 
+                          id="form_pesquisa" name="form_pesquisa">  
                     
-                 
+                          <input class="form-control mr-sm-2" type="search" id="pesquisa" 
+                              name="pesquisa" placeholder="" aria-label="Pesquisa Usuario">
+                              
+                            <a href="#"><span class="glyphicon glyphicon-search"></span></a>
+                              <input type="hidden" value="{{ Session::token() }}" name="_token">
+                  </form>  
+                    
+                      <div id="contentLoading">
+                        <div id="loading"></div>
+                      </div>
+                    
               </div>
            
   </nav>
   <div id="MostraPesq" class="pesquisaPessoas"></div>
 
-   
-  <!-- Scripts
-  ================================================= -->
-  <script src="/js/jquery-3.3.1.slim.min.js"></script>
-  <script src="/js/popper.min.js"></script>
-  <script src="/js/bootstrap.min.js"></script>
-  
-  <script src="/js/jquery-3.1.1.min.js"></script>
-  <script src="js/jquery.sticky-kit.min.js"></script>
-  <script src="js/jquery.scrollbar.min.js"></script>
-  <script src="js/script.js"></script>
-  <script src="js/AjaxMetodos.js"></script>
- 
+
 
 </body>
+
 </html>

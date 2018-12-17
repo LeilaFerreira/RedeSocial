@@ -1,22 +1,34 @@
 
 
 @isset($listUsuarios)
- @foreach($listUsuarios as $usuario)
- <div class="feed-item">
+ 
+
+ <div class="feed-item-pesquisa">
+ @foreach($listUsuarios as $usuario)   
                  
-                 
-                  <div class="live-activity">
-                  @if($usuario->fotoProfile)
+                  <!-- <div class="live-activity"> -->
+                  <!-- @if($usuario->fotoProfile)
                         <img src="{{$usuario->fotoProfile}}" 
                                         class="profile2-photo-md"/> 
-                      @endif
+                      @endif -->
                 
-                      <p>{{$usuario->nome}} </p>
-                    <input type="button" value="Seguir" onclick="seguirPessoa({{$usuario->usuario_id}}, {{ Session::token() }})" class="btn"/>
-                    <p class="text-muted"></p>
-                  </div>
-</div>
+        <p>
+        @if($usuario->fotoProfile)
+             <img src="{{$usuario->fotoProfile}}"  class="profile2-photo-md"/>     
+        @else
+             <img src="{{URL::asset('foto-perfil/profile_defauth.jpg')}}"  class="profile2-photo-md"/>     
+        @endif  
+        
+        {{$usuario->nome}}   
+        <input type="button" value="Seguir" onclick="seguirPessoa({{$usuario->usuario_id}})" class="btn"/>
+        </p>
+
+                 <!--     <input type="button" value="Seguir" onclick="seguirPessoa({{$usuario->usuario_id}}, {{ Session::token() }})" class="btn"/>
+                    <p class="text-muted"></p> -->
+                  <!-- </div> -->
  @endforeach
+</div>
+
  @endisset
 
 <script>

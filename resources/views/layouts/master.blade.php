@@ -2,6 +2,8 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <script src="{{ URL::asset('js/Util.js') }}"></script>
+    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <title>talkHouse</title>
     <style type="text/css">
@@ -34,6 +36,7 @@
   </script>
   </head>
   <body id="corpo" class="fundo">
+ 
     @include('includes.header')
     <div class="container">
       @yield('content')
@@ -52,9 +55,15 @@
     
       <div class="btn-group" role="group">
       <button type="button" class="btn btn-default" onclick="temaNormal();">tema normal</button>
-      <button type="button" class="btn btn-default" onclick="temaBlue();">tema Blue</button>
+      <button type="button" class="btn btn-default" onclick="temaDark();">tema Blue</button>
       </div>
     </footer>
+
+
+
+
+
+    @include('includes.imports') <!-- imports  js, jquery, boostrap e css -->
 
     </body>
 </html>

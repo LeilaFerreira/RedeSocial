@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Cabin:500,700|Quicksand:400,500,700');
 @import url('https://fonts.googleapis.com/css?family=Montserrat:500,900');
 
-body{margin:0;padding:0;width:100%;}
+/* body{margin:0;padding:0;width:100%;} */
 
 .title-2{
 	text-align:center;
@@ -42,7 +42,7 @@ body{margin:0;padding:0;width:100%;}
 	background-color: #ffffff;
 	background-position:center;
 	background-color: #ffffff;
-	background-image: url("https://www.pousadacamposdosholandeses.com.br/wp-content/uploads/2014/01/Tarifas-em-Natal-Pousada-Campos-dos-Holandeses-em-Campos-do-Jord%C3%A3o.jpg");
+	/* background-image: url("https://www.pousadacamposdosholandeses.com.br/wp-content/uploads/2014/01/Tarifas-em-Natal-Pousada-Campos-dos-Holandeses-em-Campos-do-Jord%C3%A3o.jpg"); */
 	background-size:cover;
 	background-position: center;
     background-size: cover;
@@ -111,7 +111,7 @@ body{margin:0;padding:0;width:100%;}
 	height: 150px;
 	border-radius: 100%;
 	border: 4px solid rgba(255, 255, 255, 1);
-	background: url("https://hypescience.com/wp-content/uploads/2015/12/natal-e-tristeza.jpg");
+	background: url("https://www.gazetadopovo.com.br/blogs/popero/wp-content/themes/padrao/imagens/perfil-blog.png");
 	background-size: cover;
 	background-position: center;
 }
@@ -525,7 +525,10 @@ body{margin:0;padding:0;width:100%;}
   }
 
   .pesquisaPessoas{
-	padding-left: 80%;
-   
-}
+
+	padding-left: 83%;
+	position: absolute;
+	z-index: 1; /* número máximo é 9999 */
+		
+  }
 

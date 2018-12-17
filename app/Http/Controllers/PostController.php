@@ -136,14 +136,13 @@ class PostController extends Controller
 
     public function deletePostProfile($post_id)
     {
-      //$post = Post::where('post_id', $post_id)->first();
+    
       if (Auth::guest()) {
           return redirect('/login');
       }
       $post = Post::find($post_id);
       $post->delete();
-      return redirect()->action('PostController@feedProfile');
-      //return redirect()->route('feed')->with(['mensagem' => 'Post deletado']);
+     
+      return redirect()->route('user.profile')->with(['mensagem' => 'Post deletado']);
     }
-    
 }
