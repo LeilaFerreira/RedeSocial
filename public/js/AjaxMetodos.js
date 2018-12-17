@@ -11,7 +11,7 @@ $(document).ready(function(){
         }       
         
     
-    // aqui a função ajax que busca os dados em outra pagina do tipo html, não é json
+        // aqui a função ajax que busca os dados em outra pagina do tipo html, não é json
           
         function load_dados(valores, page, div)
         {
@@ -50,10 +50,7 @@ $(document).ready(function(){
     
 
    function seguirPessoa(id){
-        
-      
-
-        $.ajax
+       $.ajax
             ({
                 type: 'POST',
                // dataType: 'html',
@@ -75,4 +72,24 @@ $(document).ready(function(){
                 }
             }); 
           
+    }
+
+
+    function deletarPost(id){
+    
+        $.ajax
+        ({
+            type: 'GET',
+            url: '/profile/deletepost/'+id,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(msg)
+            {
+                var node = document.getElementById(id)
+                node.parentNode.removeChild(node);
+            }
+        }); 
+
+
     }

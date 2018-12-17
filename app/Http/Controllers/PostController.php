@@ -143,6 +143,7 @@ class PostController extends Controller
       $post = Post::find($post_id);
       $post->delete();
      
-      return redirect()->route('user.profile')->with(['mensagem' => 'Post deletado']);
+      return response('OK', 200);
+      //return redirect()->route('user.profile')->with(['mensagem' => 'Post deletado']);
     }
 }
