@@ -9,19 +9,18 @@
 
 <div class="col-md-3">
         <div class="cardLateral card">
-              <img src="/foto-mural/{{Auth::user()->fotoMural}}">
+              <img src="/foto-mural/{{Auth::user()->fotoMural}}"  width="300" height="150" >
                   <div class="photo"> @if(Auth::user()->fotoProfile)
                     <img src="/foto-perfil/{{Auth::user()->fotoProfile}}" 
-                  class="profile-photo-md" alt="post-image"
-                  class="img-responsive post-image"> @endif</div>
+                  class="profile-photo-md img-responsive post-image " alt="post-image">
+               @endif</div>
+              
             
-                  <div class="banner"></div>
+
                  <ul>
                 <li><b>{{ Auth::user()->nome}}</b></li>
                 <li>Analise e Desenvolvimento de Sistemas</li>
-
-            
-                </ul>
+                 </ul>
                 <button class="contact" id="main-button">Sobre</button>
               
 

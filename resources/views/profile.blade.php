@@ -20,12 +20,13 @@
 
   
 <!-- Capa do Perfil -->
-<div class="header">
-    <img src="/foto-mural/{{$usuario->fotoMural}}" style="position:relative;
-    width:100%; height:200px; background-size:cover; background-position: center;
-    background-size: cover; min-height: 360px; border-radius: 0 0 4px 4px;">
+<!-- <div class="header"> -->
+    <img src="/foto-mural/{{$usuario->fotoMural}}" 
+    width="1110px" height="350px" >
     <!-- Botão "Alterar Fundo" -->
-  </div>
+
+
+<!-- </div> -->
   <button class="mui-btn">
       <a href="/profile/editaMural/{{$usuario->usuario_id}}">ALTERAR FOTO</a>
       <i class="fa fa-picture-o" aria-hidden="true"></i>

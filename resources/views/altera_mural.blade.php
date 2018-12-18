@@ -9,10 +9,10 @@
     			<img src="/foto-mural/{{$usuario->fotoMural}}" style="width: 150px; height: 150px; float:left; border-radius: 50%; margin-right: 25px;">
 	    			<h2>{{ $usuario->nome }}</h2>
 	    				<form enctype="multipart/form-data" action="/profile/atualizaMural/{{$usuario->usuario_id}}" method="POST">
-			    			<label>Atualizando a foto do mural</label>
-			    			<input type="file" name="fotoMural">
+			    			<label>Atualizando a foto do mural (*.jpg)</label>
+			    			<input type="file" name="fotoMural" class="btn-primary">
 			    			<input type="hidden" name="_token" value="{{ csrf_token() }}">
-			    			<input type="submit" class="pull-right btn btn-sm btn-primary">
+			    			<input type="submit" class="pull-right btn-primary">
 			    		</form>
 			    	</div>
 			    </div>

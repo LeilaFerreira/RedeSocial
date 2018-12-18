@@ -67,7 +67,7 @@ a
     /* background-image: url("https://media.licdn.com/dms/image/C4D03AQFWQ0GjkWUu0Q/profile-displayphoto-shrink_800_800/0?e=1549497600&v=beta&t=S8BLOYPXf5mEp9yCpmECRC21fwq83sOPCqMtwb0Dbig"); */
     background-size: cover;
     background-position: 50% 50%;
-    top:75px;
+    margin-top: -55px;
     -webkit-box-shadow: inset 0px 0px 5px 1px rgba(0,0,0,0.3);
     -moz-box-shadow: inset 0px 0px 5px 1px rgba(0,0,0,0.3);
     box-shadow: inset 0px 0px 5px 1px rgba(0,0,0,0.3);
@@ -86,7 +86,7 @@ a
     list-style: none;
     text-align: center;
     padding-left: 0;
-    margin-top:87px;
+    /* margin-top:87px; */
     margin-bottom:30px;
     font-size: 20px;
     -webkit-transition: all 0.7s ease-in-out;
