@@ -61,8 +61,11 @@ class PostController extends Controller
           'post'=>$request['post'],
           'usuario_id'=>$usuario_id
         ]);
-       $post->save();
-       return redirect()->action('PostController@feedProfile');
+     
+      $json = json_encode($post);
+      return response( $json , 200);
+       
+      // return redirect()->action('PostController@feedProfile');
 
   }
 

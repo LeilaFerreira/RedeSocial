@@ -102,7 +102,8 @@
               </div>
              <div>
              <br>
-             <input type="submit" id="btnCadastrar" class="btn-primary pull-right" value="Publicar"/>
+             <a onclick="publicarPost()"  class=" btn-primary pull-right" >Publicar</a>
+             <!-- <input type="submit" id="btnCadastrar" class="btn-primary pull-right" value="Publicar"/> -->
              </div>
               
             </div>
