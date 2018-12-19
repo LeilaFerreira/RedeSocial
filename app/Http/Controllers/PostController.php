@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Post;
 use App\Usuario;
+use App\Http\Controllers\UsuarioController;
 
 
 class PostController extends Controller
@@ -22,8 +23,10 @@ class PostController extends Controller
     ->orderBy('posts.data_hora', 'desc')
     ->get();
 
-
-      return view('feed')->with('posts', $posts);
+    $lsUsuarios = new UsuarioController();
+      return view('feed')
+        ->with('posts', $posts)
+        ->with('listUsuariosCad' , $lsUsuarios->ultimosUsuariosCadastrados());
   }
 
 
@@ -65,7 +68,7 @@ class PostController extends Controller
       $json = json_encode($post);
       return response( $json , 200);
        
-      // return redirect()->action('PostController@feedProfile');
+     
 
   }
 

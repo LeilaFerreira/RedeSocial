@@ -112,7 +112,7 @@ class UsuarioController extends Controller
     $usuario->estado = $request->estado;
     $usuario->cidade = $request->cidade;
     $usuario->save();
-    return view('profile');
+    return view('profile')->with('usuario', $usuario);
   }
 
   public function editaMural($usuario_id){
@@ -180,6 +180,17 @@ class UsuarioController extends Controller
           }
 
 
+    }
+
+    public function ultimosUsuariosCadastrados(){
+     // Usuario::limit(30)->offset(5)->get();
+       return Usuario::orderBy('created_at', 'desc')->take(5)->get();
+       
+     
+
+       //$json = json_encode($listaUsuariosCad);
+       //session(['listaUsuariosCad'=> $listaUsuariosCad]);
+       //return response( $json , 200);
     }
 
     // public function editaFoto($usuario_id){

@@ -38,7 +38,7 @@ Route::post('/salvarmudancas', 'UsuarioController@salvarMudancas');
 //PROFILE
 Route::get('/profile', 'UsuarioController@profile');
 Route::get('/profile/editaPerfil/{usuario_id}', 'UsuarioController@editaPerfil')->middleware('auth');
-Route::get('/profile/atualizaPerfil/{usuario_id}', 'UsuarioController@atualizaPerfil')->middleware('auth');
+Route::post('/profile/atualizaPerfil/{usuario_id}', 'UsuarioController@atualizaPerfil')->middleware('auth');
 Route::get('/profile/editaMural/{usuario_id}', 'UsuarioController@editaMural');
 Route::post('/profile/atualizaMural/{usuario_id}', 'UsuarioController@atualizaFundo')->middleware('auth');
 Route::get('/profile/editaFoto/{usuario_id}', 'UsuarioController@editaFoto')->middleware('auth');
@@ -53,6 +53,8 @@ Route::get('/profile/deletepost/{post_id}', 'PostController@deletePostProfile')
 ->middleware ( 'auth' );
 
 Route::get('/profile/editarpost/{post_id}', 'PostController@editarPostProfile')->middleware('auth');
+
+
 
 
 //FAQ

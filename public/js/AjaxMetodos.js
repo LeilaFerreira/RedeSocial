@@ -68,7 +68,7 @@ $(document).ready(function(){
                     // loading_hide();
                     // var data = msg;
                     // $(div).html(data).fadeIn();
-                    alert('Amigos OK');				
+                    //alert('Amigos OK');				
                 }
             }); 
           

@@ -34,45 +34,37 @@
     
               <br><br><br><br>
               <div>
+              
                 <h4 class="grey">Novos Usuarios</h4>
-                <div class="feed-item">
-                  <div class="live-activity">
-
-                    
-                      @if(Auth::user()->fotoProfile)
-                        <img src="/foto-perfil/{{Auth::user()->fotoProfile}}"
-                                        class="profile2-photo-md"> 
+                @isset($listUsuariosCad)
+                  @foreach($listUsuariosCad as $usuario)   
+                  @if($usuario->usuario_id != Auth::User()->usuario_id)
+                      <div class="feed-item">
+                       
+                          
+                        <div class="follow-user">
+                              @if($usuario->fotoProfile)
+                                  <img src="/foto-perfil/{{$usuario->fotoProfile}}" class="profile-photo-sm pull-left"> 
+                                  @else
+						                  <img src="{{URL::asset('foto-perfil/profile_defauth.jpg')}}"  class="profile-photo-sm pull-left"/>   
+                            @endif
+                            <div>
+                              <h5><a href="#">{{$usuario->nome}}</a></h5>
+                             
+                          
+                              <input type="button" value="Seguir" 
+                                      onclick="seguirPessoa({{$usuario->usuario_id}})" class="btn"/>
+                           
+                           
+                            </div>
+                        </div>
+                 
+                         
+                      
+                      </div>
                       @endif
-
-
-
-
-                    <p><a href="#" class="profile-link">Jones</a> </p>
-                    <input type="button" value="Seguir" class="btn"/>
-                    <p class="text-muted"></p>
-                  </div>
-                </div>
-                <div class="feed-item">
-                  <div class="live-activity">
-                    <p><a href="#" class="profile-link">Maria</a> </p>
-                    <input type="button" value="Seguir" class="btn"/>
-                    <p class="text-muted"></p>
-                  </div>
-                </div>
-                <div class="feed-item">
-                  <div class="live-activity">
-                    <p><a href="#" class="profile-link">Josoe</a></p>
-                    <input type="button" value="Seguir" class="btn"/>
-                    <p class="text-muted"></p>
-                  </div>
-                </div>
-                <div class="feed-item">
-                  <div class="live-activity">
-                    <p><a href="#" class="profile-link">Ze</a></p>
-                    <input type="button" value="Seguir" class="btn"/>
-                    <p class="text-muted"></p>
-                  </div>
-                </div>
+                    @endforeach
+                  @endisset
               </div>
     </div><!--col3 -->
 

@@ -5,27 +5,20 @@
 
  <div class="feed-item-pesquisa">
  @foreach($listUsuarios as $usuario)   
-                 
-                  <!-- <div class="live-activity"> -->
-                  <!-- @if($usuario->fotoProfile)
-                        <img src="{{$usuario->fotoProfile}}" 
-                                        class="profile2-photo-md"/> 
-                      @endif -->
-                
-        <p>
-        @if($usuario->fotoProfile)
-             <img src="{{$usuario->fotoProfile}}"  class="profile2-photo-md"/>     
-        @else
-             <img src="{{URL::asset('foto-perfil/profile_defauth.jpg')}}"  class="profile2-photo-md"/>     
-        @endif  
-        
-        {{$usuario->nome}}   
-        <input type="button" value="Seguir" onclick="seguirPessoa({{$usuario->usuario_id}})" class="btn"/>
-        </p>
-
-                 <!--     <input type="button" value="Seguir" onclick="seguirPessoa({{$usuario->usuario_id}}, {{ Session::token() }})" class="btn"/>
-                    <p class="text-muted"></p> -->
-                  <!-- </div> -->
+ @if($usuario->usuario_id != Auth::User()->usuario_id)             
+ <div class="follow-user">
+                 @if($usuario->fotoProfile)
+                              <img src="/foto-perfil/{{$usuario->fotoProfile}}" class="profile-photo-sm pull-left"> 
+							   @else
+             <img src="{{URL::asset('foto-perfil/profile_defauth.jpg')}}"  class="profile-photo-sm pull-left"/>   
+                            @endif
+						<div>
+						  <h5><a href="#">{{$usuario->nome}}</a></h5>
+						  <input type="button" value="Seguir" 
+								  onclick="seguirPessoa({{$usuario->usuario_id}})" class="btn"/>
+						</div>
+				</div>
+@endif               
  @endforeach
 </div>
 
