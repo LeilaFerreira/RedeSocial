@@ -96,7 +96,8 @@ $(document).ready(function(){
 
 
     function publicarPost(){
-     
+        let nome = $('#nome').html();
+        let pathFoto = document.getElementById('fotoPerfil').src
         let textoPost = document.getElementById('post').value;
         $.ajax
         ({
@@ -110,29 +111,25 @@ $(document).ready(function(){
             {
                
                 let obj = JSON.parse(data);
-                $( "#exibePost" ).prepend( montaHtmlPost(obj.post_id,obj.usuario_id,textoPost,obj.created_at));
+                $( "#exibePost" ).prepend( montaHtmlPost(obj.post_id,textoPost,obj.created_at, nome, pathFoto));
                 document.getElementById('post').value = '';
             }
 
         }); 
-      
-      
-      
-      
-       // 
+   
       
    }
     
     
 
-    function montaHtmlPost(postId, usuarioId, textoPost, criadoEM){
+    function montaHtmlPost(postId, textoPost, criadoEM, nome, pathFoto){
         let posthtml;
 
         
             posthtml = '<div class="post-content" id='+postId+'>';
             posthtml += '<div class="post-date hidden-xs hidden-sm">';
             posthtml += '<h5>';
-            posthtml += '<img src="http://localhost:8000/46.jpeg" class="profile2-photo-md pull-left" alt="post-image">leila </h5>';
+            posthtml += '<img src="'+pathFoto+'" class="profile2-photo-md pull-left" alt="post-image">'+nome+' </h5>';
             posthtml += '<p class="post-text">'+criadoEM+'</p>';
             posthtml += '</div>';
                             
