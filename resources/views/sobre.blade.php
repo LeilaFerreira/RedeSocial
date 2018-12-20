@@ -3,13 +3,19 @@
 @section('content')
 
 
+<div class="friend-info">
+<div class="row">
+        <div >
+        <img src="https://media.licdn.com/dms/image/C4D03AQFWQ0GjkWUu0Q/profile-displayphoto-shrink_200_200/0?e=1550707200&v=beta&t=asSb_t36WaNI4cvl1q2c5QnzBLZuMmgZupKzOa-L0-A" style= "border-radius: 100%; float:left" >
+        </div>
+        <div>
+        <h2> <p style="float:rigth"><strong>Desenvolvedora Leila Ferreira</strong></p></h2>
+        </div>
+        
+</div>
 
-<img src="https://media.licdn.com/dms/image/C4D03AQFWQ0GjkWUu0Q/profile-displayphoto-shrink_200_200/0?e=1550707200&v=beta&t=asSb_t36WaNI4cvl1q2c5QnzBLZuMmgZupKzOa-L0-A" style= "border-radius: 100%" >
 
-<p><strong>Desenvolvedora Leila Ferreira</strong></p>
-
-
-
+</div>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
  <head>
