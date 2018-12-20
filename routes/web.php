@@ -47,6 +47,8 @@ Route::get('/profilePost', 'PostController@feedProfile')
 ->name('user.profile')
 ->middleware('auth');
 
+Route::get('/profileUser/{usuario_id}', 'UsuarioController@profileUser');
+
 Route::post('/createpostProfile', 'PostController@createpostProfile')->middleware ( 'auth' );
 Route::get('/profile/deletepost/{post_id}', 'PostController@deletePostProfile')
 ->name('delete.post')
