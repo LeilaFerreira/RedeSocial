@@ -13,7 +13,9 @@
 
   <nav class="navbar navbar-expand-lg navbar navbar-light"style="background-color: #e3f2fd; height: 40px ; padding-bottom:2%" >
     <a class="navbar-brand" href="/feed" >
-    <img src="/imagem/logo.png" href="/feed" class="my-0 mr-md-auto font-weight-normal" height="20" name="logo">
+    <img src="/imagem/logo.png" href="/feed" class="my-0 mr-md-auto font-weight-normal" 
+    style="margin-top: 13px !important;"
+    height="20" name="logo">
   </a>
    
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -24,7 +26,7 @@
                 <a class="nav-link" href="/feed">Linha do Tempo <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Amigos</a>
+                <a class="nav-link" href="/amigos">Amigos</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Notificações <span class="badge badge-info">9</span>
@@ -49,11 +51,13 @@
               </li>
 
            </ul>
-          
+           <img src="foto-perfil/{{Auth::user()->fotoProfile}}" alt="user"
+           style="margin-top: 18px !important;"
+            class="profile2-photo-md pull-right">
           </div>
              <div>
 
-  
+            
                   <form class="form-inline my-2 my-lg-0"  style= "padding-top:9%" 
                           id="form_pesquisa" name="form_pesquisa">  
                     
@@ -61,6 +65,9 @@
                               name="pesquisa" placeholder="" aria-label="Pesquisa Usuario">
                               
                             <a href="#"><span class="glyphicon glyphicon-search"></span></a>
+
+                           
+
                               <input type="hidden" value="{{ Session::token() }}" name="_token">
                   </form>  
                     

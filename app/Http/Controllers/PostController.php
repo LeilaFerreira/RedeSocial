@@ -16,13 +16,22 @@ class PostController extends Controller
   {
      
     $posts = DB::table('posts')
+    ->select('*')
+   
     ->join('usuarios', function ($join) {
         $join->on('usuarios.usuario_id', '=', 'posts.usuario_id');
     })
-    ->select('*')
     ->orderBy('posts.data_hora', 'desc')
-    ->get();
+    ->get(array(
+        'post_id',
+        'post',
+        'data_hora',
+        'nome',
+        'fotoProfile'
+  ));
 
+
+    //Carregar os ultimos usuarios cadastrados no sistema
     $lsUsuarios = new UsuarioController();
       return view('feed')
         ->with('posts', $posts)
@@ -83,16 +92,16 @@ class PostController extends Controller
         $post->post = $request['post'];
         $mensagem = '!!!';
         $usuario_id = session('usuario_id');
-         // if ($request->usuario()->posts()->save($post)) {
-         //     $mensagem = 'Post successfully created!';
-         // }
+        
          $post = Post::create([
             'post'=>$request['post'],
             'usuario_id'=>$usuario_id
           ]);
-         $post->save();
-         return redirect()->action('PostController@feed');
-        // return view('feed')->with(['mensagem' => $mensagem]);
+        
+          $json = json_encode($post);
+          return response( $json , 200);
+         
+       
     }
     public function editarPost($post_id){
         $post = Post::find($post_id);

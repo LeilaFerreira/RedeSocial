@@ -66,6 +66,11 @@ Route::post('/pesquisaUsuarios','UsuarioController@pesquisaUsuario');
 
 //SEGUIR
 Route::post('/seguirPessoas', 'UsuarioController@seguirPessoas')->middleware('auth');
+Route::get('/amigos','UsuarioController@listarAmigos')->middleware('auth');
+
+//COMENTARIO
+Route::post('/addComentario', 'PostController@addComentario')->middleware('auth');
+Route::post('/delComentario', 'PostController@apagarComentario')->middleware('auth');
 
 //Botão de foto do perfil 
 // Route::get('/profile/editaFoto/{usuario_id}', 'UsuarioController@editaFoto')->middleware('auth');

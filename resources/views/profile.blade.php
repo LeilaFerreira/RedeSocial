@@ -37,7 +37,7 @@
 	<div class="avatar">
   
   @if($usuario->fotoProfile)
-  <img src="/foto-perfil/{{$usuario->fotoProfile}}" 
+  <img src="/foto-perfil/{{$usuario->fotoProfile}}" id="fotoPerfil"
             class="profile-photo-md" alt="post-image"
             class="img-responsive post-image"> @endif
  	</div>
@@ -59,7 +59,7 @@
 	<!-- Título do Perfil -->
 	<div class="tituloperfil">
 		<!-- Nome do Utilizador -->
-		<h1>{{Auth::user()->nome}}</h1>
+		<h1 id="nome">{{Auth::user()->nome}}</h1>
 		<div class="bigbriefing">
 			<!-- Briefing do usuário -->
 			<p>
@@ -128,7 +128,7 @@
             
             <h5>
             @if($usuario->fotoProfile)
-            <img src="{!! asset($usuario->fotoProfile) !!}" 
+            <img src="foto-perfil/{{$usuario->fotoProfile}}" 
             class="profile2-photo-md pull-left" alt="post-image"
             class="img-responsive post-image">
             @else

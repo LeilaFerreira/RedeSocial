@@ -10,7 +10,7 @@
 	    			<h2>{{ $usuario->nome }}</h2>
 	    				<form enctype="multipart/form-data" action="/profile/atualizaMural/{{$usuario->usuario_id}}" method="POST">
 			    			<label>Atualizando a foto do mural (*.jpg)</label>
-			    			<input type="file" name="fotoMural" class="btn-primary">
+			    			<input type="file" name="fotoMural" >
 			    			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			    			<input type="submit" class="pull-right btn-primary">
 			    		</form>

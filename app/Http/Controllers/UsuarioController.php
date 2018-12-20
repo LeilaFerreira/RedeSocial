@@ -183,14 +183,34 @@ class UsuarioController extends Controller
     }
 
     public function ultimosUsuariosCadastrados(){
-     // Usuario::limit(30)->offset(5)->get();
+   
        return Usuario::orderBy('created_at', 'desc')->take(5)->get();
-       
-     
+      
+    }
 
-       //$json = json_encode($listaUsuariosCad);
-       //session(['listaUsuariosCad'=> $listaUsuariosCad]);
-       //return response( $json , 200);
+
+    public function listarAmigos(){
+      
+      $lsUsuarios = DB::table('tb_amigo')
+        ->select('*')
+        ->join('usuarios', function ($join) {
+          $join->on('usuarios.usuario_id', '=', 'tb_amigo.pessoa1');
+      })
+      ->where('usuarios.usuario_id', Auth::user()->usuario_id)
+      ->get();
+
+      
+      $lsAmigos = array();
+      $cont = 0;
+      foreach ($lsUsuarios as $key => $value) {
+        $lsAmigos[$cont] = Usuario::find($value->pessoa2); 
+        $cont++;
+      }
+
+
+
+      return view('amigos')
+      ->with('listaAmigos', $lsAmigos);
     }
 
     // public function editaFoto($usuario_id){

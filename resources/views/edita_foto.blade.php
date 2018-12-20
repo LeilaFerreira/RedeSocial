@@ -11,7 +11,7 @@
 			    			<label>Atualizando a foto do perfil</label>
 			    			<input type="file" name="fotoPerfil">
 			    			<input type="hidden" name="_token" value="{{ csrf_token() }}">
-			    			<input type="submit" class="pull-right btn btn-sm btn-primary">
+			    			<input type="submit" class="pull-right  btn-primary">
 			    		</form>
 			    	</div>
 			    </div>

@@ -65,10 +65,7 @@ $(document).ready(function(){
                 },
                 success: function(msg)
                 {
-                    // loading_hide();
-                    // var data = msg;
-                    // $(div).html(data).fadeIn();
-                    //alert('Amigos OK');				
+                    document.getElementById(84).value = "Seguindo";
                 }
             }); 
           
@@ -161,3 +158,93 @@ $(document).ready(function(){
 
             return posthtml;
     }
+
+
+    function publicarPostFeed(){
+        let nome = $('#nome').html();
+        let pathFoto = document.getElementById('fotoPerfil').src
+        let textoPost = document.getElementById('post').value;
+        $.ajax
+        ({
+            type: 'POST',
+            url: '/createpost',
+            data: {'post': textoPost },
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(data)
+            {
+               
+                let obj = JSON.parse(data);
+                $( "#exibePost" ).prepend( montaHtmlPostFeed(obj.post_id,textoPost,obj.created_at, nome, pathFoto));
+                document.getElementById('post').value = '';
+            }
+
+        }); 
+   
+      
+   }
+    
+
+   function montaHtmlPostFeed(postId, textoPost, criadoEM, nome, pathFoto){
+    let posthtml;
+
+    
+        posthtml = '<div class="post-content" id='+postId+'>';
+        
+            posthtml += '<div class="post-date hidden-xs hidden-sm">';
+            posthtml += '<h5>';
+            posthtml += '<img src="'+pathFoto+'" class="profile2-photo-md pull-left" alt="post-image">'+nome+' </h5>';
+            posthtml += '<p class="post-text">'+criadoEM+'</p>';
+            posthtml += '</div>';
+                        
+            posthtml += '<div class="post-container">';
+                posthtml += '<div class="post-detail">';
+                                            
+                    posthtml += '<div class="reaction">';
+                    posthtml += '<a class="btn text-green"><i class="icon ion-thumbsup"></i> 13</a>';
+                    posthtml += '<a class="btn text-red"><i class="fa fa-thumbs-down"></i> 0</a>';
+                    posthtml += '</div>';
+            
+                    posthtml += '<div class="line-divider"></div>';
+                                                
+                    posthtml += '<div class="post-text">';
+                    posthtml += '<p class="post-text">'+textoPost+'</p>' ;
+                    posthtml += '<i class="em em-anguished"></i> <i class="em em-anguished"></i>';
+                    posthtml += '<i class="em em-anguished"></i><p></p>';
+                    posthtml += '</div>';
+                
+                    posthtml += '<div class="line-divider"></div>';
+                
+                    posthtml += '<div class="post-comment">';
+                    posthtml += '<a href="/profile/editarpost/'+postId+'" class=" btn-primary pull-right">Editar</a>';
+                    posthtml += '<a onclick="deletarPost('+postId+')" class=" btn-primary pull-right">Excluir</a>';
+                    posthtml += '<input type="hidden" value="ZFNY1qw1IojusPT4EzTwgg1nodjJja1wbpq32Dp2" name="_token">';
+                    posthtml += '</div>';
+
+
+                    posthtml +=  '<div class="line-divider"></div>';
+                    
+                    posthtml +=  '<div class="post-comment">';
+                    posthtml +=  '<img src="" alt="" class="profile-photo-sm">';
+                    posthtml +=  '<p><a href="" class="profile-link">John</a> 12Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud </p>';
+                    posthtml +=  '</div>';
+                    
+                    posthtml +=  '<div class="post-comment">';
+                    posthtml +=  '<img src="" alt="" class="profile-photo-sm">';
+                    posthtml +=  '<input type="text" class="form-control" placeholder="Comente aqui">';
+                    posthtml +=  '</div>';
+            
+
+                posthtml += '</div>';
+
+
+ 
+
+            posthtml += '</div>';
+        posthtml += '</div>';
+
+       
+
+        return posthtml;
+}
