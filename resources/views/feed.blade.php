@@ -140,7 +140,6 @@
                                           </div>
                                           @endif
                                           
-                                          
                                           <div class="line-divider"></div>
                                           <div class="post-comment">
                                             <img src="./News Feed _ Check what your friends are doing_files/user-4.jpg" alt="" class="profile-photo-sm">

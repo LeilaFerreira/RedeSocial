@@ -161,4 +161,9 @@ class PostController extends Controller
       return response('OK', 200);
       //return redirect()->route('user.profile')->with(['mensagem' => 'Post deletado']);
     }
+
+
+    function addComentario(Request $request){
+        //$post->post = $request->comentario;
+    }
 }
