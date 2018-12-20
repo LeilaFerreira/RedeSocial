@@ -65,7 +65,7 @@ $(document).ready(function(){
                 },
                 success: function(msg)
                 {
-                    document.getElementById(84).value = "Seguindo";
+                    document.getElementById(id).value = "Seguindo";
                 }
             }); 
           
