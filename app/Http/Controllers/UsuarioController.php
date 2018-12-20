@@ -187,6 +187,10 @@ class UsuarioController extends Controller
        return Usuario::orderBy('created_at', 'desc')->take(5)->get();
       
     }
+    public function sobre()
+   {
+       return view('sobre');
+    }
 
 
     public function listarAmigos(){
@@ -212,6 +216,7 @@ class UsuarioController extends Controller
       return view('amigos')
       ->with('listaAmigos', $lsAmigos);
     }
+
 
     // public function editaFoto($usuario_id){
     //   $usuario = Usuario::find($usuario_id);

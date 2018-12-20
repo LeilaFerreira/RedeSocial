@@ -59,6 +59,8 @@ Route::get('/profile/editarpost/{post_id}', 'PostController@editarPostProfile')-
 
 
 
+
+
 //FAQ
 Route::get('/faq', 'UsuarioController@faq');
 
@@ -77,3 +79,7 @@ Route::post('/delComentario', 'PostController@apagarComentario')->middleware('au
 //Botão de foto do perfil 
 // Route::get('/profile/editaFoto/{usuario_id}', 'UsuarioController@editaFoto')->middleware('auth');
 // Route::post('/profile/atualizaFoto/{usuario_id}', 'UsuarioController@atualizaFoto')->middleware('auth');
+
+
+//Sobre a Talkhouse
+Route::get('/sobre', 'UsuarioController@sobre');

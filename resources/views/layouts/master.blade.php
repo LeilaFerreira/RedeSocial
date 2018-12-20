@@ -46,10 +46,10 @@
     
     
   <footer class="container-fluid bg-4 text-center">
-      <a href="#" style= "color: #27aae1; font-size: 11px; font-weight: normal; max-width: 135px; padding: 4px 7px;">Sobre TalkHouse</a>
+      <a href="/sobre" style= "color: #27aae1; font-size: 11px; font-weight: normal; max-width: 135px; padding: 4px 7px;">Sobre TalkHouse</a>
       <a href="#"style= "color: #27aae1; font-size: 11px; font-weight: normal; max-width: 135px; padding: 4px 7px;">Termo de serviço</a>
       <a href="#"style= "color: #27aae1; font-size: 11px; font-weight: normal; max-width: 135px; padding: 4px 7px;">Ajuda</a>
-      <a href="#"style= "color: #27aae1; font-size: 11px; font-weight: normal; max-width: 135px; padding: 4px 7px;">Trabalhe conosco</a> 
+      <a href='#'style= "color: #27aae1; font-size: 11px; font-weight: normal; max-width: 135px; padding: 4px 7px;">Trabalhe conosco</a> 
       
 
 
