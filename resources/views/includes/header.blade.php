@@ -51,7 +51,7 @@
               </li>
 
            </ul>
-           <img src="foto-perfil/{{Auth::user()->fotoProfile}}" alt="user"
+           <img src="{{URL::asset('foto-perfil')}}/{{Auth::user()->fotoProfile}}" alt="user"
            style="margin-top: 18px !important;"
             class="profile2-photo-md pull-right">
           </div>

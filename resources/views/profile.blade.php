@@ -28,7 +28,7 @@
 
 <!-- </div> -->
   <button class="mui-btn">
-      <a href="/profile/editaMural/{{$usuario->usuario_id}}">ALTERAR FOTO</a>
+      <a href="/profile/editaMural/{{$usuario->usuario_id}}">ALTERAR CAPA</a>
       <i class="fa fa-picture-o" aria-hidden="true"></i>
     </button>
 
